@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
-#include <iterator>
 
 int main()
 {
