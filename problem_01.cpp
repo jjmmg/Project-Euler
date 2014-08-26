@@ -2,11 +2,10 @@
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
-// Let's use STL! Just for fun, since there are simpler solutions.
+// Let's use STL! Just for fun, as there are simpler solutions.
 
 #include <iostream>
 #include <algorithm>
-#include <numeric>
 #include <vector>
 
 int main()
