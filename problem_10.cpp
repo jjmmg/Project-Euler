@@ -1,13 +1,16 @@
-// 10001st prime
-// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
-// What is the 10 001st prime number?
+// Summation of primes
+// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+// Find the sum of all the primes below two million.
 
 #include <iostream>
 
 template <typename T>
 inline bool is_prime(const T& nbr)
 {
-
+    if (nbr==2 || nbr==3 || nbr==5 || nbr==7)
+        return true;
+    if (!(nbr & 0x1) || nbr<2)
+        return false;
     for (T i{3}; i*i<=nbr; i+=2)
         if (nbr % i == 0)
             return false;
@@ -16,16 +19,14 @@ inline bool is_prime(const T& nbr)
 
 int main()
 {
-    const int pos{10001};
-    int count{1}, nbr{1};
+    constexpr int MAX{2000000};
+    int count{1};
+    long sum{0};
 
-    while (count<pos)
-    {
-        nbr += 2;
-        if (is_prime(nbr))
-            ++count;
-    }
+    while (++count<MAX)
+        if (is_prime(count))
+            sum += count;
 
-    std::cout << count << " prime number: " << nbr << "\n";
+    std::cout << "Sum: " << sum << "\n";
     return 0;
 }
