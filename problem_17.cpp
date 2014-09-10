@@ -4,9 +4,12 @@
 
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 int main()
 {
+    auto start = std::chrono::steady_clock::now();
+
 //                            { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
     std::vector<int> len_spec {  0,     3,     3,       5,      4,      4,     3,       5,       5,      4,     3,        6,        6,          8,          8,         7,         7,           9,          8,          8 };
 //                            { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
@@ -44,4 +47,5 @@ int main()
     
     std::cout << "Result(" << N << "): " << res << "\n";
 
+    std::cout << std::chrono::duration<double, std::milli> (std::chrono::steady_clock::now() - start).count() << " ms\n";
 }
