@@ -1,5 +1,7 @@
-// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
-// What is the sum of the digits of the number 21000?/Title of this code
+// n! means n × (n - 1) × ... × 3 × 2 × 1
+// For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,
+// and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+// Find the sum of the digits in the number 100!
 
 #include <iostream>
 #include <string>
@@ -79,11 +81,11 @@ std::string multiply(std::string n1, std::string n2)
     return add(nbr_str);
 }
 
-std::string power_2(int exp)
+std::string factorial(int nbr)
 {
-    std::string res{"2"};
-    for (int i{1}; i<exp; ++i)
-        res = multiply(res, "2");
+    std::string res{std::to_string(nbr)};
+    for (int i{nbr-1}; i>1; --i)
+        res = multiply(res, std::to_string(i));
     return res;
 }
 
@@ -91,9 +93,8 @@ int main()
 {
     auto start = std::chrono::steady_clock::now();
 
-    const int exp{10000};
-    std::string res{power_2(exp)};
-    std::cout << "2^" << exp << ": "<< res << "\n";
+    const int nbr{100};
+    std::string res{factorial(nbr)};
     int sum{std::accumulate(res.begin(), res.end(), 0, [](int r, char c) { return r + c - '0';})};
     std::cout << "Sum: " << sum << "\n";
 
